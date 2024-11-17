@@ -4,10 +4,11 @@ def get_brightness(rgb: tuple[int, int, int]) -> float:
     return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]
 
 def get_ascii_char(brightness: float) -> str:
-    ascii_chars = "@%#*+=-:.^\",;~`'."
+    ascii_chars = "▒@?OPoc:."
     '''
-    "▓▒░ "
+    "@%#*+=-:.^\",;~`'."
     '''
+
     num_chars = len(ascii_chars)
     index = int((brightness / 255) * (num_chars - 1))
     return ascii_chars[index]
@@ -23,7 +24,7 @@ def get_dimensions(filename: str):
 def print_file(pixel, height, width):
     text = ""
     for i in range(0, height, 10):
-        for j in range(0, width, 4):
+        for j in range(0, width, 5):
             text += get_ascii_char(get_brightness(pixel[j, i]))
         text += "\n"
 
